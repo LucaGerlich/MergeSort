@@ -25,7 +25,6 @@ class MergeSort
     //Dann wird die MergeSortAlgorithm-Methode aufgerufen, um das Array zu sortieren.
     //Schließlich wird das sortierte Array ausgegeben.
 
-
     static void Merge(int[] array, int left, int middle, int right)
     {
         int n1 = middle - left + 1;
