@@ -1,19 +1,30 @@
 using System;
+using System.Diagnostics;
 
 class MergeSort
 {
+
     static void Main()
     {
-        int[] array = { 12, 11, 13, 5, 6, 7, 4, 8, 43, 94, 34, 23, 64, 7, 21 };
-        
+        int[] array = { 4, 2, 6, 5, 3, 1, 7 };
+
         Console.WriteLine("Unsortiertes Array:");
         PrintArray(array);
 
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
+
         MergeSortAlgorithm(array, 0, array.Length - 1);
 
-        Console.WriteLine("\nSortiertes Array:");
+        stopwatch.Stop();
+        Console.WriteLine($"\nSortiertes Array (Laufzeit: {stopwatch.ElapsedMilliseconds} ms):");
         PrintArray(array);
     }
+
+    //Ein Array mit Zahlen wird erstellt und ausgegeben, um den Ausgangszustand zu zeigen.
+    //Dann wird die MergeSortAlgorithm-Methode aufgerufen, um das Array zu sortieren.
+    //Schließlich wird das sortierte Array ausgegeben.
+
 
     static void Merge(int[] array, int left, int middle, int right)
     {
@@ -58,6 +69,11 @@ class MergeSort
         }
     }
 
+    //Diese Methode fusioniert zwei sortierte Teile des Arrays.
+    //Sie nimmt das ursprüngliche Array, den linken, mittleren und rechten Index als Parameter.
+    //Zwei temporäre Arrays (leftArray und rightArray) werden erstellt, um die linken und rechten Teile zu speichern.
+    //Dann erfolgt der eigentliche Merge-Schritt, bei dem die Elemente verglichen und in das ursprüngliche Array zurückgeschrieben werden.
+
     static void MergeSortAlgorithm(int[] array, int left, int right)
     {
         if (left < right)
@@ -70,6 +86,11 @@ class MergeSort
             Merge(array, left, middle, right);
         }
     }
+
+    //Dies ist die rekursive Methode, die den Merge-Sort-Algorithmus implementiert.
+    //Sie nimmt das zu sortierende Array, den linken Index und den rechten Index als Parameter.
+    //Die Methode überprüft, ob left kleiner als right ist. Wenn dies der Fall ist, wird die Mitte berechnet, und die Methode wird rekursiv für die linke und rechte Hälfte des Arrays aufgerufen.
+    //Der rekursive Aufruf erfolgt, bis die Basisbedingung erfüllt ist (wenn left nicht mehr kleiner als right ist).
 
     static void PrintArray(int[] array)
     {
